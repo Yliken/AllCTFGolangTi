@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录 Login</title>
+    <link rel="stylesheet" href="/static/css/login.css">
+</head>
+<body>
+<div class="login-container">
+    <h2>Welcome Back</h2>
+    <form id="login-form">
+        <input type="text" id="username" placeholder="用户名" required>
+        <input type="text" id="studentnum" placeholder="学号" required>
+        <button type="submit">登录</button>
+    </form>
+
+    <!-- 🔔 登录提示信息 -->
+    <p class="login-hint">😊 无需注册也能登录，用户名可以自定义，但是学号要填真实的。🌹</p>
+
+    <p id="login-message"></p>
+</div>
+
+<script src="/static/js/login.js"></script>
+</body>
+</html>
