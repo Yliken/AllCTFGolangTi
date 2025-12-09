@@ -1,0 +1,71 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f7f8fa;
+    color: #222;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background: #fff;
+    padding: 32px 40px 28px 40px;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    min-width: 340px;
+    text-align: center;
+}
+
+.user-info {
+    margin-bottom: 28px;
+}
+
+.user-info p {
+    font-size: 1.1rem;
+    margin: 12px 0;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #222;
+}
+
+.edit-nickname {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 0;
+}
+
+.edit-nickname input {
+    flex: 1;
+    padding: 8px 12px;
+    font-size: 1rem;
+    border: 1px solid #e2e2e2;
+    border-radius: 6px;
+    outline: none;
+    background: #fff;
+    color: #333;
+    transition: border-color 0.2s;
+}
+
+.edit-nickname input:focus {
+    border-color: #b3b3b3;
+}
+
+.edit-nickname button {
+    padding: 8px 18px;
+    font-size: 1rem;
+    background: #3477f5;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.edit-nickname button:hover {
+    background: #245dc1;
+}

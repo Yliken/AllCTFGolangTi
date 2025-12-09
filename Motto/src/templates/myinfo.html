@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>用户信息展示</title>
+    <link rel="stylesheet" href="/static/css/myinfo.css" />
+</head>
+<body>
+<div class="container">
+    <div class="user-info">
+        <p><strong>昵称:</strong> <span id="nickname">{{.nickname}}</span></p>
+        <p><strong>用户名:</strong> <span id="username">{{.username}}</span></p>
+    </div>
+    <form class="edit-nickname" action="/changeNickName" method="post">
+        <input type="text" id="newNickname" name="nickname" placeholder="请输入新的昵称" />
+        <button id="changeNicknameBtn" type="submit">修改昵称</button>
+    </form>
+</div>
+</body>
+</html>

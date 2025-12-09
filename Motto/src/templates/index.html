@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <title>Mottos</title>
+    <link rel="stylesheet" href="/static/css/index.css" />
+    <style>
+        /* 内联样式示例，方便快速定位右上角 */
+        .top-right-auth {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+            z-index: 1000;
+        }
+        .top-right-auth a, .top-right-auth button {
+            color: #2980b9;
+            text-decoration: none;
+            margin-left: 10px;
+            font-weight: 600;
+            border: 1.5px solid #2980b9;
+            padding: 6px 14px;
+            border-radius: 20px;
+            background: none;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+        }
+        .top-right-auth a:hover, .top-right-auth button:hover {
+            background-color: #2980b9;
+            color: white;
+        }
+        .top-right-auth span {
+            color: #555;
+            font-weight: 600;
+        }
+
+        /* 模态框背景遮罩 */
+        .modal-overlay {
+            display: none; /* 默认隐藏 */
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        /* 模态框内容 */
+        .modal {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 8px;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            font-family: Arial, sans-serif;
+        }
+        .modal h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        .modal input[type="text"] {
+            width: 100%;
+            padding: 8px 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+        .modal-buttons {
+            text-align: right;
+        }
+        .modal-buttons button {
+            padding: 6px 14px;
+            font-size: 14px;
+            border-radius: 20px;
+            border: 1.5px solid #2980b9;
+            background: none;
+            color: #2980b9;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            margin-left: 10px;
+        }
+        .modal-buttons button:hover {
+            background-color: #2980b9;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-right-auth">
+    <a href="/mymottos">查看我的Motto</a>
+    <a href="/myinfo">查看我的信息</a>
+    <button id="openModalBtn" type="button">写一个Motto</button>
+</div>
+
+<h2 class="title">Mottos</h2>
+<table class="user-table">
+    <thead>
+    <tr>
+        <th>用户名</th>
+        <th>Motto</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{range .Mottos}}
+    <tr>
+        <td>{{.NickName}}</td>
+        <td>{{.Motto}}</td>
+    </tr>
+    {{else}}
+    <tr><td colspan="2">暂无数据</td></tr>
+    {{end}}
+    </tbody>
+</table>
+
+<!-- 模态框结构 -->
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <h3 id="modalTitle">写一个Motto</h3>
+        <form id="mottoForm" method="POST" action="/">
+            <input type="text" name="motto" id="mottoInput" placeholder="请输入一句话" required maxlength="100" />
+            <div class="modal-buttons">
+                <button type="button" id="cancelBtn">取消</button>
+                <button type="submit">提交</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    // 获取元素
+    const openModalBtn = document.getElementById('openModalBtn');
+    const modalOverlay = document.getElementById('modalOverlay');
+    const cancelBtn = document.getElementById('cancelBtn');
+    const mottoInput = document.getElementById('mottoInput');
+
+    // 打开模态框
+    openModalBtn.addEventListener('click', () => {
+        modalOverlay.style.display = 'flex';
+        mottoInput.value = '';
+        mottoInput.focus();
+    });
+
+    // 关闭模态框
+    cancelBtn.addEventListener('click', () => {
+        modalOverlay.style.display = 'none';
+    });
+
+    // 点击遮罩层也关闭模态框
+    modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) {
+            modalOverlay.style.display = 'none';
+        }
+    });
+
+    // 可选：提交时简单校验
+    document.getElementById('mottoForm').addEventListener('submit', (e) => {
+        if (!mottoInput.value.trim()) {
+            e.preventDefault();
+            alert('请输入一句话');
+            mottoInput.focus();
+        }
+    });
+</script>
+
+</body>
+</html>
