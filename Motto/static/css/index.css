@@ -1,0 +1,178 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: #f0f4f8;
+    margin: 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    color: #34495e;
+    font-weight: 700;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.user-table {
+    width: 60%;
+    border-collapse: separate;
+    border-spacing: 0 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.user-table thead tr {
+    background-color: #2c3e50;
+    color: white;
+    text-align: left;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.user-table th, .user-table td {
+    padding: 14px 20px;
+}
+
+.user-table tbody tr {
+    background-color: #ecf0f1;
+    transition: background-color 0.3s ease;
+    cursor: default;
+}
+
+.user-table tbody tr:hover {
+    background-color: #d0d7de;
+}
+
+.user-table tbody td {
+    border-left: 4px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.user-table tbody tr:hover td {
+    border-left-color: #2980b9;
+}
+
+/* 右上角按钮组 */
+.top-right-auth {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    z-index: 1000;
+}
+
+.top-right-auth a, .top-right-auth button {
+    color: #2980b9;
+    background: transparent;
+    border: 1.5px solid #2980b9;
+    padding: 6px 14px;
+    margin-left: 10px;
+    font-weight: 600;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.top-right-auth a:hover, .top-right-auth button:hover {
+    background-color: #2980b9;
+    color: white;
+}
+
+/* 模态弹窗背景遮罩 */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.4);
+    display: none; /* 默认隐藏 */
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+/* 显示弹窗时使用此类 */
+.modal-overlay.active {
+    display: flex;
+}
+
+/* 弹窗主体 */
+.modal-content {
+    background: white;
+    border-radius: 8px;
+    padding: 24px 30px;
+    width: 400px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    box-sizing: border-box;
+    position: relative;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* 弹窗标题 */
+.modal-content h3 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    color: #34495e;
+    font-weight: 700;
+    font-size: 22px;
+}
+
+/* 输入框 */
+.modal-content textarea {
+    width: 100%;
+    height: 100px;
+    resize: none;
+    padding: 10px 12px;
+    font-size: 16px;
+    border: 1.5px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+.modal-content textarea:focus {
+    border-color: #2980b9;
+    outline: none;
+}
+
+/* 按钮组 */
+.modal-buttons {
+    margin-top: 20px;
+    text-align: right;
+}
+
+/* 弹窗按钮 */
+.modal-buttons button {
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    font-size: 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-left: 12px;
+    transition: background-color 0.3s;
+}
+
+.modal-buttons button:hover {
+    background-color: #1c5980;
+}
+
+/* 取消按钮样式 */
+.modal-buttons .cancel-btn {
+    background-color: #ccc;
+    color: #444;
+}
+
+.modal-buttons .cancel-btn:hover {
+    background-color: #999;
+}

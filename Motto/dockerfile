@@ -1,0 +1,22 @@
+FROM ubuntu:latest
+
+# 安装必要依赖
+RUN apt-get update && \
+    apt-get install -y ca-certificates mysql-server && \
+    rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# 复制二进制和静态资源
+COPY main /app/main
+COPY static /app/static
+COPY templates /app/templates
+COPY sql /app/sql
+
+# 启动脚本
+COPY docker-entrypoint.sh /app/docker-entrypoint.sh
+RUN chmod +x /app/main /app/docker-entrypoint.sh
+
+EXPOSE 9090
+
+CMD ["/app/docker-entrypoint.sh"]
