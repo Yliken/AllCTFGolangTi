@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>一个很鸡肋的用户系统</title>
+    <link rel="stylesheet" href="static/css/user.css" />
+</head>
+<body>
+<div class="container">
+    <h6>这个用户系统好丑啊</h6>
+
+    <div class="form" id="registerForm">
+        <h2>注册</h2>
+        <input type="text" id="regUsername" placeholder="用户名" />
+        <input type="password" id="regPassword" placeholder="密码" />
+        <button onclick="register()">注册</button>
+    </div>
+
+    <div class="form" id="loginForm">
+        <h2>登录</h2>
+        <input type="text" id="loginUsername" placeholder="用户名" />
+        <input type="password" id="loginPassword" placeholder="密码" />
+        <button onclick="login()">登录</button>
+    </div>
+
+    <div class="form" id="resetStep1Form">
+        <h2>重置密码 - 第一步</h2>
+        <input type="text" id="resetUser1" placeholder="用户名" />
+        <button onclick="requestResetToken()">发送重置 Token</button>
+    </div>
+
+    <div class="form" id="resetStep2Form">
+        <h2>重置密码 - 第二步</h2>
+        <input type="text" id="resetUser2" placeholder="用户名" />
+        <input type="text" id="resetToken" placeholder="重置 Token" />
+        <input type="password" id="newPassword" placeholder="新密码" />
+        <button onclick="resetPassword()">重置密码</button>
+    </div>
+
+    <p id="msg"></p>
+</div>
+
+<script src="static/js/user.js"></script>
+</body>
+</html>

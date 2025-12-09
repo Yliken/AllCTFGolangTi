@@ -1,0 +1,10 @@
+# 指定该文件版本
+version: '3'
+
+services:
+  web1:
+    image: dbapp/test
+    restart: always
+    build: ./video/
+    ports:
+      - "9090:9090"
